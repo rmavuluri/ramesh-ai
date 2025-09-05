@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "id": "introduction-to-ai",
+      "title": "Introduction to AI",
+      "active": true
+    },
+    {
+      "id": "supervised-learning",
+      "title": "Supervised Learning",
+      "active": false
+    },
+    {
+      "id": "unsupervised-learning",
+      "title": "Unsupervised Learning",
+      "active": false
+    },
+    {
+      "id": "reinforced-learning",
+      "title": "Reinforced Learning",
+      "active": false
+    }
+  ]
+}
