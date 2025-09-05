@@ -1,6 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import MarkdownRenderer from './MarkdownRenderer'
+import { loadArticle } from '../utils/articleLoader'
 
 const ArticleSlider = ({ isOpen, onClose, article }) => {
+  const [content, setContent] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const loadArticleContent = async () => {
+      if (article && article.id) {
+        setLoading(true)
+        try {
+          const markdownContent = await loadArticle(article.id)
+          setContent(markdownContent)
+        } catch (error) {
+          console.error('Error loading article content:', error)
+          setContent('# Error\n\nFailed to load article content.')
+        } finally {
+          setLoading(false)
+        }
+      }
+    }
+
+    loadArticleContent()
+  }, [article])
+
   return (
     <>
       {/* Backdrop */}
@@ -17,7 +41,12 @@ const ArticleSlider = ({ isOpen, onClose, article }) => {
       }`}>
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
-          <h2 className="text-xl font-bold text-black">Article Details</h2>
+          <div>
+            <h2 className="text-xl font-bold text-black">Article Details</h2>
+            {article && (
+              <p className="text-sm text-gray-600 mt-1">By {article.author}</p>
+            )}
+          </div>
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-200 rounded-full transition-colors"
@@ -34,17 +63,24 @@ const ArticleSlider = ({ isOpen, onClose, article }) => {
           <div className="max-w-4xl mx-auto">
             {article ? (
               <>
-                <h1 className="text-3xl font-bold text-black mb-4">{article.title}</h1>
-                <p className="text-gray-600 mb-6">By {article.author}</p>
-                
-                <div 
-                  className="prose prose-lg max-w-none prose-headings:text-black prose-p:text-gray-700 prose-strong:text-black prose-ul:text-gray-700 prose-li:text-gray-700 prose-h2:text-xl prose-h3:text-lg"
-                  dangerouslySetInnerHTML={{ __html: article.content }}
-                />
+                {loading ? (
+                  <div className="flex items-center justify-center h-64">
+                    <div className="flex items-center space-x-3">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                      <div className="text-gray-600 font-medium">Loading article...</div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div className="p-8 lg:p-12">
+                      <MarkdownRenderer content={content} />
+                    </div>
+                  </div>
+                )}
               </>
             ) : (
               <div className="flex items-center justify-center h-64">
-                <div className="text-gray-500">Loading article...</div>
+                <div className="text-gray-500">No article selected</div>
               </div>
             )}
           </div>

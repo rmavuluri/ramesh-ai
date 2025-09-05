@@ -23,9 +23,9 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       <Header onToggleNav={toggleNav} />
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row min-h-screen">
         <Sidebar onPageChange={handlePageChange} activePageId={activePageId} />
         <MainContent activePageId={activePageId} />
         <RightSidebar />

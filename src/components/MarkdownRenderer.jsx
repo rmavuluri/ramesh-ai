@@ -4,26 +4,30 @@ import remarkGfm from 'remark-gfm'
 
 const MarkdownRenderer = ({ content }) => {
   return (
-    <div className="prose prose-xl max-w-none 
-      prose-headings:text-gray-900 prose-headings:font-bold prose-headings:tracking-tight
-      prose-h1:text-4xl prose-h1:mb-8 prose-h1:mt-0 prose-h1:border-b prose-h1:border-gray-200 prose-h1:pb-4
-      prose-h2:text-2xl prose-h2:mb-6 prose-h2:mt-12 prose-h2:text-blue-900
-      prose-h3:text-xl prose-h3:mb-4 prose-h3:mt-8 prose-h3:text-gray-800
-      prose-h4:text-lg prose-h4:mb-3 prose-h4:mt-6 prose-h4:text-gray-800
-      prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-base
-      prose-strong:text-gray-900 prose-strong:font-semibold
-      prose-ul:text-gray-700 prose-ul:mb-6 prose-ul:pl-6
-      prose-li:text-gray-700 prose-li:mb-2 prose-li:leading-relaxed
-      prose-ol:text-gray-700 prose-ol:mb-6 prose-ol:pl-6
-      prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50 prose-blockquote:text-blue-900 prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:my-8 prose-blockquote:rounded-r-lg
-      prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono
-      prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:p-6 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-8
-      prose-a:text-blue-600 prose-a:no-underline prose-a:hover:text-blue-800 prose-a:font-medium
-      prose-table:text-sm prose-table:mb-6
-      prose-th:bg-gray-50 prose-th:font-semibold prose-th:text-gray-900 prose-th:px-4 prose-th:py-3 prose-th:border prose-th:border-gray-200
-      prose-td:px-4 prose-td:py-3 prose-td:border prose-td:border-gray-200 prose-td:text-gray-700
-      prose-img:rounded-lg prose-img:shadow-md prose-img:my-8
-      prose-hr:border-gray-200 prose-hr:my-12">
+    <div className="markdown-content prose prose-xl max-w-none
+      [&>h1]:text-4xl [&>h1]:font-extrabold [&>h1]:text-gray-900 [&>h1]:mb-8 [&>h1]:mt-0 [&>h1]:border-b [&>h1]:border-gray-200 [&>h1]:pb-4
+      [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-blue-900 [&>h2]:mb-6 [&>h2]:mt-12 [&>h2]:border-b [&>h2]:border-blue-100 [&>h2]:pb-2
+      [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-gray-800 [&>h3]:mb-4 [&>h3]:mt-8
+      [&>h4]:text-lg [&>h4]:font-semibold [&>h4]:text-gray-800 [&>h4]:mb-3 [&>h4]:mt-6
+      [&>p]:text-gray-700 [&>p]:leading-relaxed [&>p]:mb-6 [&>p]:text-base
+      [&>strong]:text-gray-900 [&>strong]:font-semibold
+      [&>ul]:text-gray-700 [&>ul]:mb-6 [&>ul]:pl-6 [&>ul]:space-y-2
+      [&>ul>li]:text-gray-700 [&>ul>li]:mb-2 [&>ul>li]:leading-relaxed [&>ul>li]:marker:text-blue-500
+      [&>ol]:text-gray-700 [&>ol]:mb-6 [&>ol]:pl-6 [&>ol]:space-y-2
+      [&>ol>li]:text-gray-700 [&>ol>li]:mb-2 [&>ol>li]:leading-relaxed
+      [&>blockquote]:border-l-4 [&>blockquote]:border-blue-500 [&>blockquote]:bg-blue-50 [&>blockquote]:text-blue-900 [&>blockquote]:pl-6 [&>blockquote]:py-4 [&>blockquote]:my-8 [&>blockquote]:rounded-r-lg [&>blockquote]:shadow-sm
+      [&>code]:text-blue-600 [&>code]:bg-blue-50 [&>code]:px-2 [&>code]:py-1 [&>code]:rounded [&>code]:text-sm [&>code]:font-mono [&>code]:border [&>code]:border-blue-200
+      [&>pre]:bg-gray-900 [&>pre]:text-gray-100 [&>pre]:p-6 [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:my-8 [&>pre]:shadow-lg [&>pre]:border [&>pre]:border-gray-700
+      [&>a]:text-blue-600 [&>a]:no-underline [&>a]:hover:text-blue-800 [&>a]:font-medium [&>a]:transition-colors [&>a]:duration-200
+      [&>table]:text-sm [&>table]:mb-6 [&>table]:shadow-sm [&>table]:rounded-lg [&>table]:overflow-hidden
+      [&>th]:bg-gray-50 [&>th]:font-semibold [&>th]:text-gray-900 [&>th]:px-4 [&>th]:py-3 [&>th]:border [&>th]:border-gray-200 [&>th]:text-left
+      [&>td]:px-4 [&>td]:py-3 [&>td]:border [&>td]:border-gray-200 [&>td]:text-gray-700 [&>td]:bg-white
+      [&>img]:rounded-lg [&>img]:shadow-md [&>img]:my-8 [&>img]:border [&>img]:border-gray-200
+      [&>hr]:border-gray-200 [&>hr]:my-12 [&>hr]:border-t-2
+      [&>em]:text-gray-600 [&>em]:italic
+      [&>del]:text-gray-500 [&>del]:line-through
+      [&>mark]:bg-yellow-200 [&>mark]:text-yellow-900 [&>mark]:px-1 [&>mark]:rounded
+      [&>kbd]:bg-gray-100 [&>kbd]:border [&>kbd]:border-gray-300 [&>kbd]:rounded [&>kbd]:px-2 [&>kbd]:py-1 [&>kbd]:text-sm [&>kbd]:font-mono">
       <ReactMarkdown remarkPlugins={[remarkGfm]}>
         {content}
       </ReactMarkdown>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import MarkdownRenderer from './MarkdownRenderer'
-import { loadMarkdownContent, defaultContent } from '../utils/contentLoader'
+import { loadPageContent } from '../utils/contentLoader'
 
 const MainContent = ({ activePageId }) => {
   const [content, setContent] = useState('')
@@ -10,16 +10,9 @@ const MainContent = ({ activePageId }) => {
     const loadContent = async () => {
       setLoading(true)
       try {
-        // Check if it's one of the new AI pages
-        const aiPages = ['introduction-to-ai', 'supervised-learning', 'unsupervised-learning', 'reinforced-learning']
-        
-        if (aiPages.includes(activePageId)) {
-          const markdownContent = await loadMarkdownContent(activePageId)
-          setContent(markdownContent)
-        } else {
-          // Use default content for existing pages
-          setContent(defaultContent)
-        }
+        // Load content from markdown files for all pages
+        const markdownContent = await loadPageContent(activePageId)
+        setContent(markdownContent)
       } catch (error) {
         console.error('Error loading content:', error)
         setContent('# Error\n\nFailed to load content.')
@@ -33,11 +26,13 @@ const MainContent = ({ activePageId }) => {
 
   if (loading) {
     return (
-      <main className="flex-1 px-6 lg:px-12 py-12 max-w-5xl mx-auto">
-        <div className="flex items-center justify-center h-64">
-          <div className="flex items-center space-x-3">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-            <div className="text-gray-600 font-medium">Loading content...</div>
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center justify-center h-64">
+            <div className="flex items-center space-x-3">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              <div className="text-gray-600 font-medium">Loading content...</div>
+            </div>
           </div>
         </div>
       </main>
@@ -45,9 +40,13 @@ const MainContent = ({ activePageId }) => {
   }
 
   return (
-    <main className="flex-1 px-6 lg:px-12 py-12 max-w-5xl mx-auto">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 lg:p-12">
-        <MarkdownRenderer content={content} />
+    <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+          <div className="p-8 lg:p-12">
+            <MarkdownRenderer content={content} />
+          </div>
+        </div>
       </div>
     </main>
   )
