@@ -5,10 +5,14 @@ import MainContent from './components/MainContent'
 import RightSidebar from './components/RightSidebar'
 import Footer from './components/Footer'
 import NavigationMenu from './components/NavigationMenu'
+import TopicSlider from './components/TopicSlider'
+import { navigationTopics } from './data/navigationTopics'
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false)
   const [activePageId, setActivePageId] = useState('introduction-to-ai')
+  const [selectedTopic, setSelectedTopic] = useState(null)
+  const [isTopicSliderOpen, setIsTopicSliderOpen] = useState(false)
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen)
@@ -22,9 +26,43 @@ function App() {
     setActivePageId(pageId)
   }
 
+  // Navigation handlers for search results
+  const handleNavigateToPage = (pageId) => {
+    setActivePageId(pageId)
+  }
+
+  const handleNavigateToArticle = (articleId) => {
+    // For now, we'll just log this - you can implement article navigation later
+    console.log('Navigate to article:', articleId)
+  }
+
+  const handleNavigateToTopic = (topicId) => {
+    console.log('Navigate to topic:', topicId)
+    // Find the topic in navigationTopics - search service uses lowercase keys
+    const topic = navigationTopics[topicId.toUpperCase()]
+    if (topic) {
+      setSelectedTopic(topic)
+      setIsTopicSliderOpen(true)
+    } else {
+      console.error('Topic not found:', topicId, 'Available topics:', Object.keys(navigationTopics))
+    }
+  }
+
+  const handleCloseTopicSlider = () => {
+    setIsTopicSliderOpen(false)
+    setTimeout(() => {
+      setSelectedTopic(null)
+    }, 500)
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header onToggleNav={toggleNav} />
+      <Header 
+        onToggleNav={toggleNav}
+        onNavigateToPage={handleNavigateToPage}
+        onNavigateToArticle={handleNavigateToArticle}
+        onNavigateToTopic={handleNavigateToTopic}
+      />
       <div className="flex flex-col lg:flex-row min-h-screen">
         <Sidebar onPageChange={handlePageChange} activePageId={activePageId} />
         <MainContent activePageId={activePageId} />
@@ -32,6 +70,11 @@ function App() {
       </div>
       <Footer />
       <NavigationMenu isOpen={isNavOpen} onClose={closeNav} />
+      <TopicSlider
+        isOpen={isTopicSliderOpen}
+        onClose={handleCloseTopicSlider}
+        topic={selectedTopic}
+      />
     </div>
   )
 }
