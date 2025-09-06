@@ -3,6 +3,8 @@ const contentCache = new Map()
 
 // Import all markdown files dynamically
 import introductionToAI from '../content/introduction-to-ai.md?raw'
+import introductionToLLM from '../content/introduction-to-llm.md?raw'
+import coreConceptsInAI from '../content/core-concepts-in-ai.md?raw'
 import supervisedLearning from '../content/supervised-learning.md?raw'
 import unsupervisedLearning from '../content/unsupervised-learning.md?raw'
 import reinforcedLearning from '../content/reinforced-learning.md?raw'
@@ -10,6 +12,8 @@ import reinforcedLearning from '../content/reinforced-learning.md?raw'
 // Map of all available markdown content
 const markdownContent = {
   'introduction-to-ai': introductionToAI,
+  'core-concepts-in-ai': coreConceptsInAI,
+  'introduction-to-llm': introductionToLLM,
   'supervised-learning': supervisedLearning,
   'unsupervised-learning': unsupervisedLearning,
   'reinforced-learning': reinforcedLearning,

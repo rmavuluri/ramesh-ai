@@ -44,6 +44,7 @@ class SearchService {
   async indexMainPages() {
     const pages = [
       { id: 'introduction-to-ai', title: 'Introduction to AI' },
+      { id: 'introduction-to-llm', title: 'Large Language Models' },
       { id: 'supervised-learning', title: 'Supervised Learning' },
       { id: 'unsupervised-learning', title: 'Unsupervised Learning' },
       { id: 'reinforced-learning', title: 'Reinforced Learning' }

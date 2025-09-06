@@ -3,18 +3,10 @@ const articleCache = new Map()
 
 // Import all article markdown files
 import commerceClauseAI from '../content/articles/commerce-clause-ai.md?raw'
-import buildingAICompanies from '../content/articles/building-ai-companies.md?raw'
-import agenticCoworkers from '../content/articles/agentic-coworkers.md?raw'
-import genAIConsumerApps from '../content/articles/gen-ai-consumer-apps.md?raw'
-import aiWorkstations from '../content/articles/ai-workstations.md?raw'
 
 // Map of all available article content
 const articleContent = {
-  'commerce-clause-ai': commerceClauseAI,
-  'building-ai-companies': buildingAICompanies,
-  'agentic-coworkers': agenticCoworkers,
-  'gen-ai-consumer-apps': genAIConsumerApps,
-  'ai-workstations': aiWorkstations,
+  'commerce-clause-ai': commerceClauseAI
 }
 
 // Get all available article IDs

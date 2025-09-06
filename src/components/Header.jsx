@@ -145,8 +145,9 @@ const Header = ({ onToggleNav, onNavigateToPage, onNavigateToArticle, onNavigate
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <div className="text-2xl font-bold tracking-wider text-gray-900">
-              RAMESH AI
+            <img src="/CR2.png" alt="Ramesh Mavuluri Logo" width="50" height="50" className="mr-3 rounded-full" />
+            <div className="text-xl font-bold tracking-wider text-gray-900">
+              RAMESH MAVULURI
             </div>
             <div className="hidden md:block ml-8">
               <div className="text-sm text-gray-500">AI Learning Platform</div>

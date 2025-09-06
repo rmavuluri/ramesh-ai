@@ -6,6 +6,16 @@
       "active": true
     },
     {
+      "id": "core-concepts-in-ai",
+      "title": "Core Concepts in AI",
+      "active": false
+    },
+    {
+      "id": "introduction-to-llm",
+      "title": "Large Language Models",
+      "active": false
+    },
+    {
       "id": "supervised-learning",
       "title": "Supervised Learning",
       "active": false

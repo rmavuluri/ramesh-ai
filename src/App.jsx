@@ -6,6 +6,7 @@ import RightSidebar from './components/RightSidebar'
 import Footer from './components/Footer'
 import NavigationMenu from './components/NavigationMenu'
 import TopicSlider from './components/TopicSlider'
+import AboutMeSlider from './components/AboutMeSlider'
 import { navigationTopics } from './data/navigationTopics'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   const [activePageId, setActivePageId] = useState('introduction-to-ai')
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [isTopicSliderOpen, setIsTopicSliderOpen] = useState(false)
+  const [isAboutMeOpen, setIsAboutMeOpen] = useState(false)
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen)
@@ -55,6 +57,14 @@ function App() {
     }, 500)
   }
 
+  const handleAboutMeClick = () => {
+    setIsAboutMeOpen(true)
+  }
+
+  const handleCloseAboutMe = () => {
+    setIsAboutMeOpen(false)
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header 
@@ -68,12 +78,16 @@ function App() {
         <MainContent activePageId={activePageId} />
         <RightSidebar />
       </div>
-      <Footer />
+      <Footer onAboutMeClick={handleAboutMeClick} />
       <NavigationMenu isOpen={isNavOpen} onClose={closeNav} />
       <TopicSlider
         isOpen={isTopicSliderOpen}
         onClose={handleCloseTopicSlider}
         topic={selectedTopic}
+      />
+      <AboutMeSlider
+        isOpen={isAboutMeOpen}
+        onClose={handleCloseAboutMe}
       />
     </div>
   )
