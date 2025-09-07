@@ -151,6 +151,7 @@ const Header = ({ onToggleNav, onNavigateToPage, onNavigateToArticle, onNavigate
             </div>
             <div className="hidden md:block ml-8">
               <div className="text-sm text-gray-500">AI Learning Platform</div>
+              <div className="text-xs text-blue-600">Scroll: {Math.round(scrollProgress)}%</div>
             </div>
           </div>
           

@@ -1268,18 +1268,39 @@ const DB_URL = process.env.DATABASE_URL;
     `
   },
   'API Development': {
-    title: 'API Development',
-    description: 'API development',
+    title: 'REST Services & API Development',
+    description: 'REST Services & API Development',
     content: `
-    # API Development
+# REST Services & API Development
 
-API development is the process of creating and managing APIs (Application Programming Interfaces). APIs allow different software systems to communicate with each other by exposing their functionality through a standardized interface.
 
-## What is API Development?
+## **What is API?**
 
-API development involves designing, implementing, and maintaining APIs to enable communication between different software systems. It includes creating endpoints, defining request/response formats, and ensuring security and scalability.
+API – Application Programming Interface - It’s a way of making request into a component. Here the component means Model, Views, Controllers, Services, Plugins and Data Access Objects …etc. So a component that can be reused across multiple systems and applications can be packaged and distributed as an API.
 
-    `
+## **API Lifecycle**
+
+Full API lifecycle management is the process of overseeing an API from its creation to retirement across its full life span. This includes everything from designing, publishing, documenting, securing, and analyzing APIs. An effective API strategy must include an API management solution that makes APIs easily discoverable and reusable, and ensures that they are properly governed and secured.
+
+> The 3 API lifecycle stages
+
+1. Design
+2. Implementation
+3. Management
+
+### ***Design***
+
+The design phase of the API lifecycle is where the API is defined and documented. This includes the API endpoints, request/response formats, and security requirements.
+
+### ***Implementation***
+
+The implementation phase of the API lifecycle is where the API is created and deployed. This includes the API endpoints, request/response formats, and security requirements.
+
+### ***Management***
+
+The management phase of the API lifecycle is where the API is monitored and managed. This includes the API endpoints, request/response formats, and security requirements.
+
+  `
   },
   'TYPESCRIPT': {
     title: 'TypeScript',

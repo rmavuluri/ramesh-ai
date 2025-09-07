@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
@@ -6,9 +6,16 @@ const TopicSlider = ({ isOpen, onClose, topic }) => {
   const [headings, setHeadings] = useState([])
   const [selectedService, setSelectedService] = useState(null)
   const [serviceContent, setServiceContent] = useState('')
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const contentRef = useRef(null)
 
   useEffect(() => {
     if (topic && topic.content) {
+      // Reset selected service and content when topic changes
+      setSelectedService(null)
+      setServiceContent('')
+      setScrollProgress(0)
+      
       // Extract headings from markdown content
       const headingRegex = /^(#{1,6})\s+(.+)$/gm
       const extractedHeadings = []
@@ -30,6 +37,32 @@ const TopicSlider = ({ isOpen, onClose, topic }) => {
       }
     }
   }, [topic])
+
+  // Reset state when slider closes
+  useEffect(() => {
+    if (!isOpen) {
+      setSelectedService(null)
+      setServiceContent('')
+      setScrollProgress(0)
+    }
+  }, [isOpen])
+
+  // Scroll progress tracking
+  useEffect(() => {
+    const handleScroll = () => {
+      if (contentRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } = contentRef.current
+        const progress = (scrollTop / (scrollHeight - clientHeight)) * 100
+        setScrollProgress(Math.min(100, Math.max(0, progress)))
+      }
+    }
+
+    const contentElement = contentRef.current
+    if (contentElement) {
+      contentElement.addEventListener('scroll', handleScroll)
+      return () => contentElement.removeEventListener('scroll', handleScroll)
+    }
+  }, [selectedService, serviceContent])
 
   const scrollToHeading = (headingId) => {
     const element = document.getElementById(headingId)
@@ -144,30 +177,39 @@ const TopicSlider = ({ isOpen, onClose, topic }) => {
       />
       
       {/* Sliding Panel */}
-      <div className={`fixed top-0 left-0 h-full w-full bg-white z-70 transform transition-transform duration-500 ease-out shadow-2xl ${
+      <div className={`fixed top-0 left-0 h-full w-full bg-white z-70 transform transition-transform duration-500 ease-out shadow-2xl flex flex-col ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
-          <div>
-            <h2 className="text-2xl font-bold text-black">{topic.title}</h2>
-            <p className="text-gray-600 mt-1">{topic.description}</p>
+        <div className="border-b border-gray-200 bg-gray-50">
+          <div className="flex items-center justify-between p-6">
+            <div>
+              <h2 className="text-2xl font-bold text-black">{topic.title}</h2>
+              <p className="text-gray-600 mt-1">{topic.description}</p>
+            </div>
+            <button
+              onClick={onClose}
+              className="p-2 hover:bg-gray-200 rounded-full transition-colors"
+              aria-label="Close panel"
+            >
+              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-gray-200 rounded-full transition-colors"
-            aria-label="Close panel"
-          >
-            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          {/* Progress Bar */}
+          <div className="w-full h-1 bg-gray-200">
+            <div 
+              className="h-full bg-blue-600 transition-all duration-150 ease-out"
+              style={{ width: `${scrollProgress}%` }}
+            />
+          </div>
         </div>
         
-        <div className="flex h-full">
+        <div className="flex flex-1 min-h-0">
           {/* Table of Contents Sidebar */}
           {headings.length > 0 && (
-            <div className="w-80 bg-gray-50 border-r border-gray-200 p-6 overflow-y-auto">
+            <div className="w-80 bg-gray-50 border-r border-gray-200 p-6 overflow-y-auto flex-shrink-0">
               <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">
                 Table of Contents
               </h3>
@@ -230,7 +272,7 @@ const TopicSlider = ({ isOpen, onClose, topic }) => {
           )}
 
           {/* Content Area */}
-          <div className="flex-1 p-8 overflow-y-auto">
+          <div ref={contentRef} className="flex-1 p-8 overflow-y-auto min-h-0">
             <div className="max-w-4xl mx-auto">
               {selectedService ? (
                 // Show selected service content

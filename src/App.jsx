@@ -22,7 +22,17 @@ function App() {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
-      const progress = (scrollTop / scrollHeight) * 100
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0
+      
+      // Debug logging
+      console.log('Scroll Debug:', {
+        scrollTop,
+        scrollHeight: document.documentElement.scrollHeight,
+        windowHeight: window.innerHeight,
+        calculatedScrollHeight: scrollHeight,
+        progress: Math.min(100, Math.max(0, progress))
+      })
+      
       setScrollProgress(Math.min(100, Math.max(0, progress)))
     }
 
