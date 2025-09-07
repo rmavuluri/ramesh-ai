@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import MainContent from './components/MainContent'
@@ -15,6 +15,20 @@ function App() {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [isTopicSliderOpen, setIsTopicSliderOpen] = useState(false)
   const [isAboutMeOpen, setIsAboutMeOpen] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+
+  // Scroll progress tracking for main page
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = (scrollTop / scrollHeight) * 100
+      setScrollProgress(Math.min(100, Math.max(0, progress)))
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen)
@@ -72,6 +86,7 @@ function App() {
         onNavigateToPage={handleNavigateToPage}
         onNavigateToArticle={handleNavigateToArticle}
         onNavigateToTopic={handleNavigateToTopic}
+        scrollProgress={scrollProgress}
       />
       <div className="flex flex-col lg:flex-row min-h-screen">
         <Sidebar onPageChange={handlePageChange} activePageId={activePageId} />

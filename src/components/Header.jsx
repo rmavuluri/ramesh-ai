@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import SearchResults from './SearchResults'
 import searchService from '../utils/searchService'
 
-const Header = ({ onToggleNav, onNavigateToPage, onNavigateToArticle, onNavigateToTopic }) => {
+const Header = ({ onToggleNav, onNavigateToPage, onNavigateToArticle, onNavigateToTopic, scrollProgress = 0 }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
   const [searchResults, setSearchResults] = useState([])
@@ -228,6 +228,14 @@ const Header = ({ onToggleNav, onNavigateToPage, onNavigateToArticle, onNavigate
           </div>
           </div>
         )}
+      </div>
+      
+      {/* Progress Bar - positioned at the very bottom of the header */}
+      <div className="w-full h-1 bg-gray-200">
+        <div 
+          className="h-full bg-blue-600 transition-all duration-150 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
       </div>
     </header>
   )
