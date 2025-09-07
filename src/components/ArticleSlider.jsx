@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import MarkdownRenderer from './MarkdownRenderer'
 import { loadArticle } from '../utils/articleLoader'
 
 const ArticleSlider = ({ isOpen, onClose, article }) => {
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const contentRef = useRef(null)
 
   useEffect(() => {
     const loadArticleContent = async () => {
@@ -25,6 +27,23 @@ const ArticleSlider = ({ isOpen, onClose, article }) => {
     loadArticleContent()
   }, [article])
 
+  // Scroll progress tracking
+  useEffect(() => {
+    const handleScroll = () => {
+      if (contentRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } = contentRef.current
+        const progress = (scrollTop / (scrollHeight - clientHeight)) * 100
+        setScrollProgress(Math.min(100, Math.max(0, progress)))
+      }
+    }
+
+    const contentElement = contentRef.current
+    if (contentElement) {
+      contentElement.addEventListener('scroll', handleScroll)
+      return () => contentElement.removeEventListener('scroll', handleScroll)
+    }
+  }, [content, loading])
+
   return (
     <>
       {/* Backdrop */}
@@ -40,26 +59,35 @@ const ArticleSlider = ({ isOpen, onClose, article }) => {
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gray-50">
-          <div>
-            <h2 className="text-xl font-bold text-black">Article Details</h2>
-            {article && (
-              <p className="text-sm text-gray-600 mt-1">By {article.author}</p>
-            )}
+        <div className="border-b border-gray-200 bg-gray-50">
+          <div className="flex items-center justify-between p-4">
+            <div>
+              <h2 className="text-xl font-bold text-black">Article Details</h2>
+              {article && (
+                <p className="text-sm text-gray-600 mt-1">By {article.author}</p>
+              )}
+            </div>
+            <button
+              onClick={onClose}
+              className="p-2 hover:bg-gray-200 rounded-full transition-colors"
+              aria-label="Close panel"
+            >
+              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-gray-200 rounded-full transition-colors"
-            aria-label="Close panel"
-          >
-            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          {/* Progress Bar */}
+          <div className="w-full h-1 bg-gray-200">
+            <div 
+              className="h-full bg-blue-600 transition-all duration-150 ease-out"
+              style={{ width: `${scrollProgress}%` }}
+            />
+          </div>
         </div>
         
         {/* Content */}
-        <div className="p-6 h-full overflow-y-auto">
+        <div ref={contentRef} className="p-6 h-full overflow-y-auto">
           <div className="max-w-4xl mx-auto">
             {article ? (
               <>
