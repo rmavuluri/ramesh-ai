@@ -47,7 +47,8 @@ class SearchService {
       { id: 'introduction-to-llm', title: 'Large Language Models' },
       { id: 'supervised-learning', title: 'Supervised Learning' },
       { id: 'unsupervised-learning', title: 'Unsupervised Learning' },
-      { id: 'reinforced-learning', title: 'Reinforced Learning' }
+      { id: 'reinforced-learning', title: 'Reinforced Learning' },
+      { id: 'generative-ai-models', title: 'Generative AI Models' }
     ]
 
     for (const page of pages) {

@@ -40,7 +40,7 @@ const ArticleSlider = ({ isOpen, onClose, article }) => {
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
+        <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gray-50">
           <div>
             <h2 className="text-xl font-bold text-black">Article Details</h2>
             {article && (

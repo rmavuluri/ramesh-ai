@@ -6,18 +6,8 @@ const NavigationMenu = ({ isOpen, onClose }) => {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [isTopicSliderOpen, setIsTopicSliderOpen] = useState(false)
 
-  const navigationItems = [
-    'KAFKA',
-    'TERRAFORM',
-    'AWS',
-    'SPRING-BOOT',
-    'NODEJS',
-    'TypeScript',
-    'Core JAVA',
-    'Hibernate',
-    'REST Services',
-    'API Development'
-  ]
+  // Dynamically get all available topics from navigationTopics
+  const navigationItems = Object.keys(navigationTopics).sort()
 
   const handleTopicClick = (topicKey) => {
     const topic = navigationTopics[topicKey]
@@ -61,28 +51,21 @@ const NavigationMenu = ({ isOpen, onClose }) => {
         {/* Navigation Items */}
         <nav className="p-6 overflow-y-auto flex-1">
           <ul className="space-y-2">
-            {navigationItems.map((item, index) => {
-              const topicKey = item.replace(/\s+/g, '-').toUpperCase()
-              const hasContent = navigationTopics[topicKey]
+            {navigationItems.map((topicKey, index) => {
+              const topic = navigationTopics[topicKey]
+              const displayName = topic ? topic.title : topicKey.replace(/-/g, ' ')
               
               return (
                 <li key={index}>
                   <button
-                    onClick={() => hasContent ? handleTopicClick(topicKey) : null}
-                    className={`block w-full text-left text-gray-900 hover:text-blue-600 transition-colors py-3 px-4 text-sm font-medium rounded-lg ${
-                      hasContent 
-                        ? 'hover:bg-blue-50 cursor-pointer' 
-                        : 'cursor-not-allowed opacity-50'
-                    }`}
-                    disabled={!hasContent}
+                    onClick={() => handleTopicClick(topicKey)}
+                    className="block w-full text-left text-gray-900 hover:text-blue-600 transition-colors py-3 px-4 text-sm font-medium rounded-lg hover:bg-blue-50 cursor-pointer"
                   >
                     <div className="flex items-center justify-between">
-                      <span>{item}</span>
-                      {hasContent && (
-                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      )}
+                      <span>{displayName}</span>
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </div>
                   </button>
                 </li>

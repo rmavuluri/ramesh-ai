@@ -29,6 +29,16 @@
       "id": "reinforced-learning",
       "title": "Reinforced Learning",
       "active": false
+    },
+    {
+      "id": "generative-ai-models",
+      "title": "Generative AI Models",
+      "active": false
+    },
+    {
+      "id": "model-context-protocol",
+      "title": "Model Context Protocol",
+      "active": false
     }
   ]
 }

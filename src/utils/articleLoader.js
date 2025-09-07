@@ -2,11 +2,17 @@
 const articleCache = new Map()
 
 // Import all article markdown files
-import commerceClauseAI from '../content/articles/commerce-clause-ai.md?raw'
+import aiWorkstations from '../content/articles/ai-workstations.md?raw'
+import mcpServerCapabilities from '../content/articles/mcp-server-capabilities.md?raw'
+import solidOopsPrinciples from '../content/articles/solid-oops-principles.md?raw'
+import twelveFactors from '../content/articles/12-factors.md?raw'
 
 // Map of all available article content
 const articleContent = {
-  'commerce-clause-ai': commerceClauseAI
+  'ai-workstations': aiWorkstations,
+  'mcp-server-capabilities': mcpServerCapabilities,
+  'solid-oops-principles': solidOopsPrinciples,
+  '12-factors': twelveFactors,
 }
 
 // Get all available article IDs

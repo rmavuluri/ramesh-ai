@@ -1,6 +1,6 @@
 # AI Workstations: Hardware Requirements for Modern AI Development
 
-**Author:** James Wilson
+**Author:** Ramesh Mavuluri
 
 ## Introduction
 

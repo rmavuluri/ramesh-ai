@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import ArticleSlider from './ArticleSlider'
-import { articles } from '../data/articles'
+import { getArticlesByYear } from '../data/articles'
 
 const RightSidebar = () => {
   const [selectedArticle, setSelectedArticle] = useState(null)
   const [isSliderOpen, setIsSliderOpen] = useState(false)
+  
+  // Get articles grouped by year
+  const articlesByYear = getArticlesByYear()
 
   const handleReadMore = (article) => {
     // Add a small delay for smoother transition
@@ -39,39 +42,52 @@ const RightSidebar = () => {
             <div className="border-t border-gray-200"></div>
           </div>
           
-          <div className="space-y-3 sm:space-y-4">
-            {articles.map((article, index) => {
-              const isActive = selectedArticle && selectedArticle.id === article.id
-              return (
-                <div 
-                  key={index} 
-                  className={`space-y-2 sm:space-y-3 p-3 sm:p-4 rounded-xl transition-all duration-200 ${
-                    isActive ? 'bg-blue-50 border border-blue-200 shadow-sm' : 'hover:bg-gray-50 border border-transparent'
-                  }`}
-                >
-                  <h3 className={`font-semibold text-sm leading-tight transition-colors line-clamp-2 ${
-                    isActive ? 'text-blue-900' : 'text-gray-900'
-                  }`}>
-                    {article.title}
-                  </h3>
-                  <p className={`text-xs transition-colors ${
-                    isActive ? 'text-blue-700' : 'text-gray-600'
-                  }`}>
-                    {article.author}
-                  </p>
-                  <button 
-                    onClick={() => handleReadMore(article)}
-                    className={`inline-flex items-center text-xs font-medium transition-colors cursor-pointer ${
-                      isActive 
-                        ? 'text-blue-600 hover:text-blue-800' 
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    {isActive ? 'Currently Reading →' : 'Read More →'}
-                  </button>
+          <div className="space-y-6">
+            {articlesByYear.map((yearGroup, yearIndex) => (
+              <div key={yearGroup.year} className="space-y-3">
+                {/* Year Header */}
+                <div className="flex items-center space-x-2 mb-4">
+                  <h3 className="text-lg font-bold text-gray-800">{yearGroup.year}</h3>
+                  <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent"></div>
                 </div>
-              )
-            })}
+                
+                {/* Articles for this year */}
+                <div className="space-y-3 sm:space-y-4">
+                  {yearGroup.articles.map((article, articleIndex) => {
+                    const isActive = selectedArticle && selectedArticle.id === article.id
+                    return (
+                      <div 
+                        key={`${yearGroup.year}-${articleIndex}`} 
+                        className={`space-y-2 sm:space-y-3 p-3 sm:p-4 rounded-xl transition-all duration-200 ${
+                          isActive ? 'bg-blue-50 border border-blue-200 shadow-sm' : 'hover:bg-gray-50 border border-transparent'
+                        }`}
+                      >
+                        <h4 className={`font-semibold text-sm leading-tight transition-colors line-clamp-2 ${
+                          isActive ? 'text-blue-900' : 'text-gray-900'
+                        }`}>
+                          {article.title}
+                        </h4>
+                        <p className={`text-xs transition-colors ${
+                          isActive ? 'text-blue-700' : 'text-gray-600'
+                        }`}>
+                          {article.author}
+                        </p>
+                        <button 
+                          onClick={() => handleReadMore(article)}
+                          className={`inline-flex items-center text-xs font-medium transition-colors cursor-pointer ${
+                            isActive 
+                              ? 'text-blue-600 hover:text-blue-800' 
+                              : 'text-gray-600 hover:text-gray-900'
+                          }`}
+                        >
+                          {isActive ? 'Currently Reading →' : 'Read More →'}
+                        </button>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </aside>

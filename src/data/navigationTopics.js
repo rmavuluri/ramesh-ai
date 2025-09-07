@@ -437,249 +437,750 @@ Amazon Web Services is a comprehensive cloud computing platform that provides ov
 
 ## What is AWS?
 
-AWS is the world's most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally.
+AWS is the world's most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally. It provides on-demand cloud computing platforms and APIs to individuals, companies, and governments on a metered pay-as-you-go basis.
 
-### Key Benefits
+## Core AWS Services
 
-- **Scalability**: Auto-scaling based on demand
-- **Reliability**: 99.99% uptime SLA
-- **Security**: Enterprise-grade security
-- **Cost-effective**: Pay-as-you-go pricing
-- **Global Reach**: Multiple regions worldwide
+### **Amazon ECS Fargate**
 
-## Core Services
+#### What is ECS Fargate?
 
-### Compute Services
+Amazon ECS Fargate is a serverless compute engine for containers. It allows you to run containers without managing servers or clusters. Think of it as a way to run your containerized applications without worrying about the underlying infrastructure.
 
-#### Amazon EC2 (Elastic Compute Cloud)
-- Virtual servers in the cloud
-- Multiple instance types
-- Auto Scaling Groups
-- Load Balancers
+#### Key Features
 
-#### AWS Lambda
-- Serverless compute
-- Event-driven execution
-- Pay per request
-- Automatic scaling
+- **Serverless**: No server management required
+- **Pay-per-use**: Only pay for the resources you use
+- **Automatic scaling**: Scales based on demand
+- **Security**: Built-in security and compliance
+- **Integration**: Works with ECS and EKS
 
-#### Amazon ECS/EKS
-- Container orchestration
-- Docker support
-- Kubernetes on AWS
-- Managed services
+#### Why it matters?
 
-### Storage Services
+ECS Fargate matters because it eliminates the complexity of managing servers while running containerized applications. It allows developers to focus on building applications rather than managing infrastructure, making it easier to deploy and scale applications.
 
-#### Amazon S3 (Simple Storage Service)
-- Object storage
-- 99.999999999% durability
-- Multiple storage classes
-- Lifecycle policies
+#### What to learn?
 
-#### Amazon EBS (Elastic Block Store)
-- Block storage for EC2
-- Persistent volumes
-- Multiple volume types
-- Snapshots
+- Container concepts and Docker
+- ECS task definitions and services
+- Networking and security groups
+- Load balancing and auto-scaling
+- Monitoring and logging
 
-#### Amazon EFS (Elastic File System)
-- Managed NFS
-- Shared file system
-- Multiple AZs
-- Bursting performance
+#### How it works?
 
-### Database Services
+1. You define your application in a task definition
+2. ECS Fargate provisions the compute resources
+3. Your containers run on managed infrastructure
+4. Fargate handles scaling and resource management
+5. You only pay for the resources your containers use
 
-#### Amazon RDS
-- Managed relational databases
-- MySQL, PostgreSQL, Oracle
-- Multi-AZ deployments
-- Automated backups
+#### Common Use Cases
 
-#### Amazon DynamoDB
-- NoSQL database
-- Single-digit millisecond latency
-- Auto-scaling
-- Global tables
+- Microservices architecture
+- Batch processing jobs
+- Web applications and APIs
+- Data processing pipelines
+- Development and testing environments
 
-#### Amazon Redshift
-- Data warehouse
-- Petabyte-scale
-- Columnar storage
-- SQL analytics
+#### Benefits
 
-### Networking Services
+- **No server management**: Focus on your application
+- **Automatic scaling**: Handles traffic spikes
+- **Cost-effective**: Pay only for what you use
+- **Secure**: Built-in security features
+- **Reliable**: High availability and fault tolerance
 
-#### Amazon VPC
-- Virtual private cloud
-- Isolated network environment
-- Subnets and route tables
-- Security groups
+#### Limitations
 
-#### Amazon CloudFront
-- Content delivery network
-- Global edge locations
-- DDoS protection
-- SSL/TLS termination
+- **Cold starts**: Initial startup time for new tasks
+- **Resource limits**: Maximum CPU and memory per task
+- **Cost**: Can be expensive for long-running applications
+- **Vendor lock-in**: Tied to AWS ecosystem
+- **Debugging**: Limited access to underlying infrastructure
 
-#### AWS Direct Connect
-- Dedicated network connection
-- Private connectivity
-- Reduced bandwidth costs
-- Consistent performance
+#### Integrate with other services
 
-## Security Services
+- **ECS**: Container orchestration
+- **EKS**: Kubernetes on AWS
+- **ALB/NLB**: Load balancing
+- **CloudWatch**: Monitoring and logging
+- **IAM**: Security and access control
+- **VPC**: Networking and security
 
-### AWS IAM (Identity and Access Management)
-- User and group management
+### **AWS Lambda**
+
+#### What is AWS Lambda?
+
+AWS Lambda is a serverless compute service that runs your code in response to events. It automatically manages the compute resources and you only pay for the compute time you consume.
+
+#### Key Features
+
+- **Event-driven**: Responds to events from other AWS services
+- **Automatic scaling**: Scales automatically with demand
+- **Pay-per-request**: Only pay for actual usage
+- **Multiple languages**: Supports many programming languages
+- **Integration**: Works with 200+ AWS services
+
+#### Why it matters?
+
+Lambda matters because it enables event-driven architectures and microservices without server management. It's perfect for building scalable, cost-effective applications that respond to events in real-time.
+
+#### What to learn?
+
+- Serverless architecture concepts
+- Event-driven programming
+- AWS SDK and APIs
+- Error handling and retry logic
+- Monitoring and debugging
+
+#### How it works?
+
+1. You upload your code as a function
+2. Lambda automatically provisions compute resources
+3. Your function runs when triggered by events
+4. Lambda scales automatically based on demand
+5. You pay only for the execution time
+
+#### Common Use Cases
+
+- API backends and web services
+- Data processing and ETL jobs
+- Real-time file processing
+- Scheduled tasks and cron jobs
+- IoT data processing
+- Chatbots and voice assistants
+
+#### Benefits
+
+- **No server management**: Focus on code, not infrastructure
+- **Automatic scaling**: Handles any amount of traffic
+- **Cost-effective**: Pay per request, not per server
+- **Fast deployment**: Deploy code quickly
+- **High availability**: Built-in fault tolerance
+
+#### Limitations
+
+- **Execution time limit**: Maximum 15 minutes per execution
+- **Memory limits**: Maximum 10GB memory per function
+- **Cold starts**: Initial startup delay
+- **Vendor lock-in**: Tied to AWS ecosystem
+- **Debugging complexity**: Limited debugging options
+
+#### Integrate with other services
+
+- **API Gateway**: HTTP APIs
+- **S3**: File processing
+- **DynamoDB**: Database operations
+- **SNS/SQS**: Messaging
+- **EventBridge**: Event routing
+- **CloudWatch**: Monitoring
+
+### **AWS EventBridge**
+
+#### What is AWS EventBridge?
+
+AWS EventBridge is a serverless event bus that makes it easy to connect applications using data from your own applications, integrated SaaS applications, and AWS services.
+
+#### Key Features
+
+- **Event routing**: Route events between services
+- **Schema discovery**: Automatically discover event schemas
+- **Custom events**: Send your own events
+- **Partner integrations**: Connect with SaaS providers
+- **Event replay**: Replay events for testing
+
+#### Why it matters?
+
+EventBridge matters because it enables event-driven architectures and decouples services. It makes it easy to build reactive applications that respond to changes in real-time.
+
+#### What to learn?
+
+- Event-driven architecture patterns
+- Event schemas and formats
+- Event routing and filtering
+- SaaS integrations
+- Error handling and retry logic
+
+#### How it works?
+
+1. Services publish events to EventBridge
+2. EventBridge routes events based on rules
+3. Target services receive and process events
+4. EventBridge handles delivery and retries
+5. You can monitor and audit all events
+
+#### Common Use Cases
+
+- Microservices communication
+- Data processing pipelines
+- Monitoring and alerting
+- System integration
+- Workflow automation
+- Real-time analytics
+
+#### Benefits
+
+- **Decoupling**: Services don't need to know about each other
+- **Scalability**: Handles high event volumes
+- **Reliability**: Built-in retry and error handling
+- **Flexibility**: Easy to add new event sources and targets
+- **Cost-effective**: Pay only for events processed
+
+#### Limitations
+
+- **Event size limit**: Maximum 256KB per event
+- **Throughput limits**: Rate limits on event publishing
+- **Complexity**: Can become complex with many rules
+- **Debugging**: Hard to trace event flows
+- **Vendor lock-in**: Tied to AWS ecosystem
+
+#### Integrate with other services
+
+- **Lambda**: Function execution
+- **SNS**: Notifications
+- **SQS**: Message queuing
+- **Step Functions**: Workflow orchestration
+- **CloudWatch**: Monitoring
+- **SaaS partners**: Third-party integrations
+
+### **AWS Secrets Manager**
+
+#### What is AWS Secrets Manager?
+
+AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources. It enables you to replace hardcoded credentials with API calls to retrieve secrets programmatically.
+
+#### Key Features
+
+- **Automatic rotation**: Rotate secrets automatically
+- **Encryption**: Encrypt secrets at rest and in transit
+- **Fine-grained access**: Control who can access secrets
+- **Audit logging**: Track secret usage
+- **Cross-region replication**: Replicate secrets across regions
+
+#### Why it matters?
+
+Secrets Manager matters because it centralizes secret management and improves security. It eliminates hardcoded credentials and provides automatic rotation, reducing security risks.
+
+#### What to learn?
+
+- Secret management best practices
+- Encryption and security concepts
+- IAM policies and permissions
+- API integration patterns
+- Monitoring and auditing
+
+#### How it works?
+
+1. You store secrets in Secrets Manager
+2. Applications request secrets via API calls
+3. Secrets Manager encrypts and stores secrets
+4. IAM controls who can access secrets
+5. Automatic rotation keeps secrets fresh
+
+#### Common Use Cases
+
+- Database credentials
+- API keys and tokens
+- SSH keys and certificates
+- Third-party service credentials
+- Application configuration secrets
+
+#### Benefits
+
+- **Security**: Centralized and encrypted secret storage
+- **Compliance**: Audit trails and access controls
+- **Automation**: Automatic secret rotation
+- **Integration**: Easy API access
+- **Scalability**: Handles many secrets and applications
+
+#### Limitations
+
+- **Cost**: Can be expensive for many secrets
+- **API limits**: Rate limits on secret access
+- **Complexity**: Requires proper IAM setup
+- **Dependencies**: Applications must be updated to use it
+- **Vendor lock-in**: Tied to AWS ecosystem
+
+#### Integrate with other services
+
+- **RDS**: Database credentials
+- **Lambda**: Function secrets
+- **ECS/EKS**: Container secrets
+- **CloudFormation**: Infrastructure secrets
+- **CloudWatch**: Monitoring and logging
+- **IAM**: Access control
+
+### **AWS IAM (Identity and Access Management)**
+
+#### What is AWS IAM?
+
+AWS IAM is a web service that helps you securely control access to AWS resources. You use IAM to control who is authenticated (signed in) and authorized (has permissions) to use resources.
+
+#### Key Features
+
+- **Users**: Individual AWS accounts
+- **Groups**: Collections of users
+- **Roles**: Temporary credentials
+- **Policies**: Permission documents
+- **MFA**: Multi-factor authentication
+
+#### Why it matters?
+
+IAM matters because it's the foundation of AWS security. It controls who can access what resources and ensures that only authorized users and services can perform actions.
+
+#### What to learn?
+
+- Identity and access management concepts
+- Policy writing and best practices
 - Role-based access control
 - Multi-factor authentication
-- Policy management
+- Security auditing and compliance
 
-### AWS KMS (Key Management Service)
-- Encryption key management
-- Hardware security modules
-- Key rotation
-- Audit logging
+#### How it works?
 
-### AWS WAF (Web Application Firewall)
-- Web application protection
-- SQL injection prevention
-- XSS protection
-- Rate limiting
+1. You create users, groups, and roles
+2. You attach policies that define permissions
+3. Users authenticate with credentials
+4. IAM checks permissions before allowing actions
+5. All actions are logged for auditing
 
-## Monitoring and Logging
+#### Common Use Cases
 
-### Amazon CloudWatch
-- Monitoring and observability
-- Metrics and alarms
+- User access management
+- Service-to-service authentication
+- Cross-account access
+- Temporary access for contractors
+- Compliance and auditing
+
+#### Benefits
+
+- **Security**: Fine-grained access control
+- **Compliance**: Audit trails and logging
+- **Flexibility**: Granular permission management
+- **Integration**: Works with all AWS services
+- **Cost-effective**: No additional charges
+
+#### Limitations
+
+- **Complexity**: Can become complex with many policies
+- **Learning curve**: Requires understanding of AWS services
+- **Policy limits**: Maximum policy size and complexity
+- **Performance**: Policy evaluation can impact performance
+- **Debugging**: Hard to troubleshoot permission issues
+
+#### Integrate with other services
+
+- **All AWS services**: Access control
+- **CloudTrail**: Audit logging
+- **CloudWatch**: Monitoring
+- **STS**: Temporary credentials
+- **Organizations**: Multi-account management
+- **Directory services**: Enterprise integration
+
+### **AWS MSK (Managed Streaming for Apache Kafka)**
+
+#### What is AWS MSK?
+
+Amazon MSK is a fully managed service that makes it easy for you to build and run applications that use Apache Kafka to process streaming data.
+
+#### Key Features
+
+- **Fully managed**: No infrastructure management
+- **High availability**: Multi-AZ deployment
+- **Security**: Encryption in transit and at rest
+- **Monitoring**: CloudWatch integration
+- **Compatibility**: 100% compatible with Apache Kafka
+
+#### Why it matters?
+
+MSK matters because it provides a fully managed Kafka service, eliminating the operational overhead of running Kafka clusters. It's essential for real-time data streaming and event-driven architectures.
+
+#### What to learn?
+
+- Apache Kafka concepts
+- Streaming data processing
+- Event-driven architecture
+- Data serialization formats
+- Monitoring and troubleshooting
+
+#### How it works?
+
+1. You create a Kafka cluster in MSK
+2. Applications produce messages to topics
+3. Other applications consume messages from topics
+4. MSK handles replication and fault tolerance
+5. You monitor and manage through AWS console
+
+#### Common Use Cases
+
+- Real-time analytics
+- Event sourcing
+- Microservices communication
+- Data integration
 - Log aggregation
-- Dashboards
+- Stream processing
 
-### AWS X-Ray
-- Distributed tracing
-- Performance analysis
-- Error tracking
-- Service map
+#### Benefits
 
-### AWS CloudTrail
-- API call logging
-- Audit trail
-- Compliance
-- Security analysis
+- **Fully managed**: No operational overhead
+- **Scalable**: Handles high throughput
+- **Reliable**: Built-in fault tolerance
+- **Secure**: Encryption and access controls
+- **Compatible**: Works with existing Kafka tools
 
-## Machine Learning Services
+#### Limitations
 
-### Amazon SageMaker
-- End-to-end ML platform
-- Jupyter notebooks
-- Model training
-- Model deployment
+- **Cost**: Can be expensive for small workloads
+- **Complexity**: Requires Kafka knowledge
+- **Vendor lock-in**: Tied to AWS ecosystem
+- **Performance**: May have latency compared to self-managed
+- **Customization**: Limited configuration options
 
-### Amazon Rekognition
-- Image and video analysis
-- Face recognition
-- Object detection
-- Content moderation
+#### Integrate with other services
 
-### Amazon Comprehend
-- Natural language processing
-- Sentiment analysis
-- Entity recognition
-- Language detection
+- **Lambda**: Stream processing
+- **Kinesis**: Data streaming
+- **S3**: Data lake storage
+- **DynamoDB**: Real-time databases
+- **CloudWatch**: Monitoring
+- **VPC**: Networking and security
 
-## Best Practices
+### **AWS S3 (Simple Storage Service)**
 
-### Cost Optimization
-- Use Reserved Instances
-- Implement auto-scaling
-- Monitor usage
-- Use spot instances
+#### What is AWS S3?
 
-### Security
-- Enable MFA
-- Use least privilege
-- Encrypt data
-- Regular audits
+Amazon S3 is an object storage service that offers industry-leading scalability, data availability, security, and performance. It's designed to store and retrieve any amount of data from anywhere on the web.
 
-### Performance
-- Use CDN
-- Optimize databases
-- Implement caching
-- Monitor metrics
+#### Key Features
 
-## Getting Started
+- **Durability**: 99.999999999% (11 9's)
+- **Availability**: 99.99% uptime
+- **Scalability**: Unlimited storage
+- **Security**: Encryption and access controls
+- **Performance**: Low latency and high throughput
 
-### AWS Free Tier
-- 12 months free
-- Limited usage
-- Learning resources
-- Hands-on labs
+#### Why it matters?
 
-### AWS CLI Setup
-\`\`\`bash
-# Install AWS CLI
-pip install awscli
+S3 matters because it's the foundation of cloud storage and data lakes. It's used by virtually every AWS service and is essential for storing, backing up, and archiving data.
 
-# Configure credentials
-aws configure
+#### What to learn?
 
-# Test connection
-aws s3 ls
-\`\`\`
+- Object storage concepts
+- Data lifecycle management
+- Security and access controls
+- Data transfer and migration
+- Cost optimization strategies
 
-### Infrastructure as Code
-\`\`\`yaml
-# CloudFormation template
-Resources:
-  MyEC2Instance:
-    Type: AWS::EC2::Instance
-    Properties:
-      ImageId: ami-0c55b159cbfafe1d0
-      InstanceType: t3.micro
-\`\`\`
+#### How it works?
 
-## Advanced Topics
+1. You create buckets to store objects
+2. You upload files as objects with metadata
+3. S3 stores objects across multiple facilities
+4. You can access objects via HTTP/HTTPS
+5. S3 provides durability and availability guarantees
 
-### Multi-Region Architecture
+#### Common Use Cases
+
+- Data backup and archiving
+- Static website hosting
+- Data lakes and analytics
+- Application data storage
+- Content distribution
 - Disaster recovery
-- Global applications
-- Data replication
-- Cross-region failover
 
-### Serverless Architecture
-- Lambda functions
-- API Gateway
-- Event-driven design
-- Microservices
+#### Benefits
 
-### Container Strategy
-- ECS vs EKS
-- Fargate
-- Container registry
-- Service mesh
+- **Durability**: Extremely reliable data storage
+- **Scalability**: Unlimited storage capacity
+- **Security**: Multiple encryption options
+- **Performance**: Fast data access
+- **Cost-effective**: Multiple storage classes
 
-## Cost Management
+#### Limitations
 
-### AWS Cost Explorer
-- Cost analysis
-- Budget alerts
-- Resource optimization
-- Forecasting
+- **Consistency**: Eventual consistency for some operations
+- **Cost**: Can be expensive for frequent access
+- **Complexity**: Many features and options
+- **Bandwidth**: Data transfer costs
+- **Vendor lock-in**: Tied to AWS ecosystem
 
-### AWS Trusted Advisor
-- Cost optimization
-- Performance recommendations
-- Security checks
-- Fault tolerance
+#### Integrate with other services
 
-## Future Trends
+- **CloudFront**: Content delivery
+- **Lambda**: Serverless processing
+- **Glacier**: Long-term archiving
+- **Athena**: Data analytics
+- **Redshift**: Data warehousing
+- **All AWS services**: Data storage
 
-- **Edge Computing**: AWS Wavelength
-- **Quantum Computing**: Amazon Braket
-- **5G Integration**: Private 5G
-- **Sustainability**: Carbon footprint tracking
+### **AWS ECR (Elastic Container Registry)**
+
+#### What is AWS ECR?
+
+Amazon ECR is a fully managed Docker container registry that makes it easy for developers to store, manage, and deploy Docker container images.
+
+#### Key Features
+
+- **Docker compatibility**: Works with Docker CLI
+- **Image scanning**: Vulnerability scanning
+- **Lifecycle policies**: Automatic image cleanup
+- **Encryption**: Encrypt images at rest
+- **Cross-region replication**: Replicate across regions
+
+#### Why it matters?
+
+ECR matters because it provides a secure, scalable place to store container images. It's essential for containerized applications and integrates seamlessly with other AWS container services.
+
+#### What to learn?
+
+- Docker and container concepts
+- Image security and scanning
+- Lifecycle management
+- CI/CD integration
+- Multi-region deployments
+
+#### How it works?
+
+1. You build Docker images locally
+2. You push images to ECR repositories
+3. ECR stores and encrypts images
+4. You pull images to run containers
+5. ECR handles security and lifecycle management
+
+#### Common Use Cases
+
+- Container image storage
+- CI/CD pipelines
+- Multi-environment deployments
+- Image security scanning
+- Cross-region replication
+
+#### Benefits
+
+- **Security**: Encrypted and scanned images
+- **Integration**: Works with ECS, EKS, Lambda
+- **Scalability**: Handles any number of images
+- **Cost-effective**: Pay only for storage used
+- **Reliability**: High availability and durability
+
+#### Limitations
+
+- **Vendor lock-in**: Tied to AWS ecosystem
+- **Cost**: Can be expensive for many images
+- **Complexity**: Requires Docker knowledge
+- **Bandwidth**: Data transfer costs
+- **Dependencies**: Requires other AWS services
+
+#### Integrate with other services
+
+- **ECS**: Container orchestration
+- **EKS**: Kubernetes on AWS
+- **Lambda**: Serverless containers
+- **CodeBuild**: CI/CD pipelines
+- **CloudWatch**: Monitoring
+- **IAM**: Access control
+
+### **AWS S3 Sink Connector**
+
+#### What is AWS S3 Sink Connector?
+
+The S3 Sink Connector is a Kafka Connect connector that exports data from Apache Kafka topics to Amazon S3. It reads data from Kafka and writes it to S3 in various formats.
+
+#### Key Features
+
+- **Multiple formats**: JSON, Avro, Parquet
+- **Partitioning**: Automatic partitioning by time
+- **Compression**: Gzip, Snappy, LZ4
+- **Schema evolution**: Handle schema changes
+- **Exactly-once delivery**: Guarantee data consistency
+
+#### Why it matters?
+
+S3 Sink Connector matters because it enables real-time data pipelines from Kafka to S3. This is essential for building data lakes and analytics platforms.
+
+#### What to learn?
+
+- Kafka Connect concepts
+- Data serialization formats
+- S3 storage patterns
+- Schema management
+- Data pipeline monitoring
+
+#### How it works?
+
+1. Kafka Connect runs the S3 Sink Connector
+2. Connector reads messages from Kafka topics
+3. Data is formatted and partitioned
+4. Formatted data is written to S3
+5. Connector handles errors and retries
+
+#### Common Use Cases
+
+- Real-time data lakes
+- Analytics data pipelines
+- Data archiving
+- ETL processes
+- Data warehousing
+
+#### Benefits
+
+- **Real-time**: Continuous data streaming
+- **Reliable**: Exactly-once delivery guarantees
+- **Scalable**: Handles high throughput
+- **Flexible**: Multiple data formats
+- **Cost-effective**: Efficient S3 storage
+
+#### Limitations
+
+- **Complexity**: Requires Kafka knowledge
+- **Dependencies**: Needs Kafka Connect
+- **Cost**: S3 storage and transfer costs
+- **Latency**: Batch processing delays
+- **Vendor lock-in**: Tied to AWS ecosystem
+
+#### Integrate with other services
+
+- **Kafka**: Message streaming
+- **S3**: Data storage
+- **Athena**: Data analytics
+- **Redshift**: Data warehousing
+- **Glue**: ETL processing
+- **CloudWatch**: Monitoring
+
+### **AWS EventBridge Sink Connector**
+
+#### What is AWS EventBridge Sink Connector?
+
+The EventBridge Sink Connector sends data from Kafka topics to Amazon EventBridge. It enables event-driven architectures by routing Kafka messages to EventBridge.
+
+#### Key Features
+
+- **Event routing**: Send Kafka messages to EventBridge
+- **Schema mapping**: Transform message formats
+- **Error handling**: Dead letter queues
+- **Monitoring**: CloudWatch integration
+- **Scalability**: Handle high message volumes
+
+#### Why it matters?
+
+EventBridge Sink Connector matters because it bridges Kafka and EventBridge, enabling event-driven architectures. It allows you to route streaming data to various AWS services.
+
+#### What to learn?
+
+- Event-driven architecture
+- Message transformation
+- Error handling patterns
+- Event routing strategies
+- Monitoring and debugging
+
+#### How it works?
+
+1. Kafka Connect runs the EventBridge Sink Connector
+2. Connector reads messages from Kafka topics
+3. Messages are transformed to EventBridge format
+4. Events are sent to EventBridge
+5. EventBridge routes events to target services
+
+#### Common Use Cases
+
+- Event-driven microservices
+- Real-time notifications
+- Workflow automation
+- System integration
+- Monitoring and alerting
+
+#### Benefits
+
+- **Decoupling**: Separate Kafka from downstream services
+- **Flexibility**: Route events to multiple targets
+- **Reliability**: Built-in error handling
+- **Scalability**: Handle high event volumes
+- **Integration**: Connect with many AWS services
+
+#### Limitations
+
+- **Complexity**: Requires understanding both Kafka and EventBridge
+- **Dependencies**: Needs Kafka Connect
+- **Cost**: EventBridge and Kafka costs
+- **Latency**: Additional processing layer
+- **Vendor lock-in**: Tied to AWS ecosystem
+
+#### Integrate with other services
+
+- **Kafka**: Message streaming
+- **EventBridge**: Event routing
+- **Lambda**: Function execution
+- **SNS**: Notifications
+- **SQS**: Message queuing
+- **CloudWatch**: Monitoring
+
+### **AWS Snowflake Sink Connector**
+
+#### What is AWS Snowflake Sink Connector?
+
+The Snowflake Sink Connector exports data from Kafka topics to Snowflake data warehouse. It enables real-time data streaming from Kafka to Snowflake for analytics.
+
+#### Key Features
+
+- **Automatic table creation**: Creates tables automatically
+- **Schema evolution**: Handles schema changes
+- **Error handling**: Dead letter queue support
+- **Performance**: Optimized for high throughput
+- **Security**: Encrypted connections
+
+#### Why it matters?
+
+Snowflake Sink Connector matters because it enables real-time data analytics. It allows you to stream data from Kafka directly to Snowflake for immediate analysis and reporting.
+
+#### What to learn?
+
+- Snowflake data warehouse concepts
+- Kafka Connect architecture
+- Data serialization formats
+- Schema management
+- Performance optimization
+
+#### How it works?
+
+1. Kafka Connect runs the Snowflake Sink Connector
+2. Connector reads messages from Kafka topics
+3. Data is transformed to Snowflake format
+4. Data is loaded into Snowflake tables
+5. Connector handles errors and retries
+
+#### Common Use Cases
+
+- Real-time analytics
+- Data warehousing
+- Business intelligence
+- Machine learning pipelines
+- Operational reporting
+
+#### Benefits
+
+- **Real-time**: Continuous data streaming
+- **Scalable**: Handle high data volumes
+- **Reliable**: Error handling and retries
+- **Flexible**: Schema evolution support
+- **Performance**: Optimized for Snowflake
+
+#### Limitations
+
+- **Complexity**: Requires Kafka and Snowflake knowledge
+- **Dependencies**: Needs Kafka Connect
+- **Cost**: Snowflake and Kafka costs
+- **Latency**: Batch processing delays
+- **Vendor lock-in**: Tied to specific vendors
+
+#### Integrate with other services
+
+- **Kafka**: Message streaming
+- **Snowflake**: Data warehouse
+- **CloudWatch**: Monitoring
+- **IAM**: Access control
+- **VPC**: Networking
+- **Secrets Manager**: Credentials
     `
   },
   'SPRING-BOOT': {
@@ -1507,6 +2008,1100 @@ const DB_URL = process.env.DATABASE_URL;
 - **Bun**: Fast JavaScript runtime
 - **WebAssembly**: High-performance computing
 - **Edge Computing**: Serverless functions
+    `
+  },
+  'Core JAVA': {
+    title: 'Core JAVA',
+    description: 'Java programming language',
+    content: `
+    `
+  },
+  'Hibernate': {
+    title: 'Hibernate',
+    description: 'Java persistence framework',
+    content: `
+    `
+  },
+  'REST Services': {
+    title: 'REST Services',
+    description: 'Representational state transfer services',
+    content: `
+    `
+  },
+  'API Development': {
+    title: 'API Development',
+    description: 'API development',
+    content: `
+    `
+  },
+  'TYPESCRIPT': {
+    title: 'TypeScript',
+    description: 'Strongly typed programming language that builds on JavaScript',
+    content: `
+# TypeScript
+
+TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It's developed and maintained by Microsoft and adds static type definitions to JavaScript.
+
+## What is TypeScript?
+
+TypeScript is a superset of JavaScript that compiles to plain JavaScript. It adds optional static type checking, classes, interfaces, and other features to help developers build large-scale applications.
+
+### Key Benefits
+
+- **Static Type Checking**: Catch errors at compile time, not runtime
+- **Better IDE Support**: Enhanced autocomplete, refactoring, and navigation
+- **Improved Code Quality**: Self-documenting code with type annotations
+- **Modern JavaScript Features**: Access to latest ECMAScript features
+- **Gradual Adoption**: Can be adopted incrementally in existing JavaScript projects
+
+## Core Concepts
+
+### Basic Types
+
+\`\`\`typescript
+// Primitive types
+let name: string = "John";
+let age: number = 30;
+let isActive: boolean = true;
+
+// Arrays
+let numbers: number[] = [1, 2, 3, 4, 5];
+let names: Array<string> = ["Alice", "Bob", "Charlie"];
+
+// Objects
+let person: { name: string; age: number } = {
+  name: "John",
+  age: 30
+};
+\`\`\`
+
+### Interfaces
+
+\`\`\`typescript
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  isActive?: boolean; // Optional property
+}
+
+interface Employee extends User {
+  department: string;
+  salary: number;
+}
+
+const user: User = {
+  id: 1,
+  name: "John Doe",
+  email: "john@example.com"
+};
+\`\`\`
+
+### Classes
+
+\`\`\`typescript
+class Animal {
+  protected name: string;
+  
+  constructor(name: string) {
+    this.name = name;
+  }
+  
+  public speak(): string {
+    return \`\${this.name} makes a sound\`;
+  }
+}
+
+class Dog extends Animal {
+  public speak(): string {
+    return \`\${this.name} barks\`;
+  }
+}
+
+const dog = new Dog("Buddy");
+console.log(dog.speak()); // "Buddy barks"
+\`\`\`
+
+### Generics
+
+\`\`\`typescript
+// Generic function
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+let output = identity<string>("hello");
+let number = identity<number>(42);
+
+// Generic interface
+interface ApiResponse<T> {
+  data: T;
+  status: number;
+  message: string;
+}
+
+const userResponse: ApiResponse<User> = {
+  data: user,
+  status: 200,
+  message: "Success"
+};
+\`\`\`
+
+## Advanced Features
+
+### Union and Intersection Types
+
+\`\`\`typescript
+// Union types
+type Status = "loading" | "success" | "error";
+type ID = string | number;
+
+// Intersection types
+type Employee = User & {
+  employeeId: string;
+  department: string;
+};
+\`\`\`
+
+### Type Guards
+
+\`\`\`typescript
+function isString(value: unknown): value is string {
+  return typeof value === "string";
+}
+
+function processValue(value: string | number) {
+  if (isString(value)) {
+    // TypeScript knows value is string here
+    return value.toUpperCase();
+  }
+  return value.toString();
+}
+\`\`\`
+
+### Enums
+
+\`\`\`typescript
+enum Color {
+  Red = "red",
+  Green = "green",
+  Blue = "blue"
+}
+
+enum Status {
+  Pending,
+  Approved,
+  Rejected
+}
+
+const favoriteColor: Color = Color.Blue;
+const currentStatus: Status = Status.Pending;
+\`\`\`
+
+## Configuration
+
+### tsconfig.json
+
+\`\`\`json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020", "DOM"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
+\`\`\`
+
+## Best Practices
+
+### 1. Use Strict Mode
+Enable strict type checking in tsconfig.json:
+\`\`\`json
+{
+  "compilerOptions": {
+    "strict": true
+  }
+}
+\`\`\`
+
+### 2. Prefer Interfaces over Types
+Use interfaces for object shapes, types for unions and primitives:
+\`\`\`typescript
+// Good
+interface User {
+  name: string;
+  age: number;
+}
+
+// Good
+type Status = "active" | "inactive";
+\`\`\`
+
+### 3. Use Type Assertions Sparingly
+\`\`\`typescript
+// Avoid
+const element = document.getElementById("myDiv") as HTMLDivElement;
+
+// Better
+const element = document.getElementById("myDiv");
+if (element instanceof HTMLDivElement) {
+  // Use element safely
+}
+\`\`\`
+
+### 4. Leverage Utility Types
+\`\`\`typescript
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+}
+
+// Create a type without password
+type PublicUser = Omit<User, "password">;
+
+// Make all properties optional
+type PartialUser = Partial<User>;
+
+// Pick specific properties
+type UserSummary = Pick<User, "id" | "name">;
+\`\`\`
+
+## Integration with Frameworks
+
+### React with TypeScript
+
+\`\`\`typescript
+import React, { useState, useEffect } from 'react';
+
+interface Props {
+  title: string;
+  initialCount?: number;
+}
+
+const Counter: React.FC<Props> = ({ title, initialCount = 0 }) => {
+  const [count, setCount] = useState<number>(initialCount);
+
+  useEffect(() => {
+    document.title = \`\${title}: \${count}\`;
+  }, [title, count]);
+
+  return (
+    <div>
+      <h1>{title}</h1>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </div>
+  );
+};
+
+export default Counter;
+\`\`\`
+
+### Node.js with TypeScript
+
+\`\`\`typescript
+import express, { Request, Response } from 'express';
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+const app = express();
+app.use(express.json());
+
+app.get('/users/:id', (req: Request, res: Response) => {
+  const userId: number = parseInt(req.params.id);
+  // Handle user retrieval
+  res.json({ id: userId, name: "John Doe" });
+});
+
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
+\`\`\`
+
+## Common Patterns
+
+### Error Handling
+
+\`\`\`typescript
+class CustomError extends Error {
+  constructor(
+    message: string,
+    public statusCode: number,
+    public code?: string
+  ) {
+    super(message);
+    this.name = 'CustomError';
+  }
+}
+
+function divide(a: number, b: number): number {
+  if (b === 0) {
+    throw new CustomError('Division by zero', 400, 'DIVISION_BY_ZERO');
+  }
+  return a / b;
+}
+\`\`\`
+
+### API Response Types
+
+\`\`\`typescript
+interface ApiError {
+  message: string;
+  code: string;
+  statusCode: number;
+}
+
+type ApiResult<T> = 
+  | { success: true; data: T }
+  | { success: false; error: ApiError };
+
+async function fetchUser(id: number): Promise<ApiResult<User>> {
+  try {
+    const response = await fetch(\`/api/users/\${id}\`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch user');
+    }
+    const user = await response.json();
+    return { success: true, data: user };
+  } catch (error) {
+    return {
+      success: false,
+      error: {
+        message: error.message,
+        code: 'FETCH_ERROR',
+        statusCode: 500
+      }
+    };
+  }
+}
+\`\`\`
+
+## Migration from JavaScript
+
+### 1. Rename Files
+Change \`.js\` files to \`.ts\` or \`.tsx\` for React components.
+
+### 2. Add Type Annotations Gradually
+Start with function parameters and return types:
+\`\`\`typescript
+// Before
+function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+
+// After
+function greet(name: string): string {
+  return \`Hello, \${name}!\`;
+}
+\`\`\`
+
+### 3. Use \`any\` Sparingly
+Only use \`any\` when absolutely necessary, prefer \`unknown\`:
+\`\`\`typescript
+// Avoid
+function processData(data: any) {
+  return data.someProperty;
+}
+
+// Better
+function processData(data: unknown) {
+  if (typeof data === 'object' && data !== null) {
+    return (data as { someProperty: unknown }).someProperty;
+  }
+  return null;
+}
+\`\`\`
+
+## Tools and Ecosystem
+
+### Essential Tools
+- **TypeScript Compiler (tsc)**: Official compiler
+- **ts-node**: Run TypeScript directly
+- **ts-loader**: Webpack loader
+- **@types packages**: Type definitions for JavaScript libraries
+
+### Popular Libraries
+- **React**: \`@types/react\`
+- **Express**: \`@types/express\`
+- **Lodash**: \`@types/lodash\`
+- **Jest**: \`@types/jest\`
+
+### IDE Support
+- **VS Code**: Excellent built-in support
+- **WebStorm**: Full TypeScript integration
+- **Sublime Text**: TypeScript plugin available
+
+## Performance Considerations
+
+### Compilation
+- TypeScript adds no runtime overhead
+- Compilation can be slow for large projects
+- Use \`--incremental\` flag for faster builds
+
+### Bundle Size
+- Type information is stripped during compilation
+- No impact on final bundle size
+- Source maps available for debugging
+
+TypeScript is an essential tool for modern JavaScript development, providing the type safety and developer experience needed for building maintainable, scalable applications.
+    `
+  },
+  'REACT': {
+    title: 'React',
+    description: 'JavaScript library for building user interfaces',
+    content: `
+# React
+
+React is a JavaScript library for building user interfaces, especially web applications. It was created by Facebook and is now maintained by Meta. React makes it easy to create interactive UIs by breaking them into small, reusable pieces called components.
+
+## What is React?
+
+React is a library that helps you build websites and web applications. Instead of writing all your code in one big file, React lets you break your website into small, reusable pieces called components. Each component handles one part of your website, making it easier to build and maintain.
+
+### Why Use React?
+
+- **Reusable Components**: Write once, use many times
+- **Virtual DOM**: Makes your app faster by updating only what changed
+- **Easy to Learn**: Simple concepts that build on each other
+- **Huge Community**: Lots of help and resources available
+- **Works Everywhere**: Can build web apps, mobile apps, and desktop apps
+
+## Core Concepts
+
+### Components
+
+Components are like building blocks for your website. Think of them as LEGO pieces - you can combine them to build something bigger.
+
+\`\`\`jsx
+// Simple component
+function Welcome() {
+  return <h1>Hello, World!</h1>;
+}
+
+// Using the component
+function App() {
+  return (
+    <div>
+      <Welcome />
+      <Welcome />
+    </div>
+  );
+}
+\`\`\`
+
+### JSX
+
+JSX is a special way to write HTML inside JavaScript. It looks like HTML but it's actually JavaScript.
+
+\`\`\`jsx
+// This is JSX
+const element = <h1>Hello, {name}!</h1>;
+
+// It's the same as writing:
+const element = React.createElement('h1', null, 'Hello, ', name, '!');
+\`\`\`
+
+### Props
+
+Props are like parameters you pass to components. They let you customize how components look and behave.
+
+\`\`\`jsx
+// Component that accepts props
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+
+// Using the component with props
+function App() {
+  return <Greeting name="Alice" />;
+}
+\`\`\`
+
+### State
+
+State is data that can change over time. When state changes, React automatically updates the part of your website that uses that data.
+
+\`\`\`jsx
+import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+\`\`\`
+
+## Essential Hooks
+
+### useState Hook
+
+useState lets you add state to functional components.
+
+\`\`\`jsx
+import { useState } from 'react';
+
+function Example() {
+  // Declare a state variable
+  const [name, setName] = useState('John');
+
+  return (
+    <div>
+      <p>Your name is: {name}</p>
+      <input 
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+    </div>
+  );
+}
+\`\`\`
+
+### useEffect Hook
+
+useEffect lets you perform side effects in functional components. Side effects are things like fetching data or updating the document title.
+
+\`\`\`jsx
+import { useState, useEffect } from 'react';
+
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // This runs after the component mounts
+    fetch(\`/api/users/\${userId}\`)
+      .then(response => response.json())
+      .then(data => setUser(data));
+  }, [userId]); // Only run when userId changes
+
+  if (!user) return <div>Loading...</div>;
+
+  return <div>Hello, {user.name}!</div>;
+}
+\`\`\`
+
+### useContext Hook
+
+useContext lets you share data between components without passing props down through every level.
+
+\`\`\`jsx
+import { createContext, useContext } from 'react';
+
+// Create a context
+const ThemeContext = createContext();
+
+// Provider component
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+  
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+// Consumer component
+function ThemedButton() {
+  const { theme, setTheme } = useContext(ThemeContext);
+  
+  return (
+    <button 
+      style={{ 
+        background: theme === 'light' ? 'white' : 'black',
+        color: theme === 'light' ? 'black' : 'white'
+      }}
+      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+    >
+      Toggle Theme
+    </button>
+  );
+}
+\`\`\`
+
+## Event Handling
+
+React uses camelCase for event names and passes functions as event handlers.
+
+\`\`\`jsx
+function Button() {
+  const handleClick = () => {
+    alert('Button clicked!');
+  };
+
+  const handleMouseOver = (event) => {
+    event.target.style.backgroundColor = 'blue';
+  };
+
+  return (
+    <button 
+      onClick={handleClick}
+      onMouseOver={handleMouseOver}
+    >
+      Click me
+    </button>
+  );
+}
+\`\`\`
+
+## Conditional Rendering
+
+You can show different content based on conditions.
+
+\`\`\`jsx
+function Greeting({ isLoggedIn, name }) {
+  if (isLoggedIn) {
+    return <h1>Welcome back, {name}!</h1>;
+  } else {
+    return <h1>Please log in.</h1>;
+  }
+}
+
+// Or using the ternary operator
+function Greeting({ isLoggedIn, name }) {
+  return (
+    <h1>
+      {isLoggedIn ? \`Welcome back, \${name}!\` : 'Please log in.'}
+    </h1>
+  );
+}
+\`\`\`
+
+## Lists and Keys
+
+When rendering lists, React needs a unique key for each item to track changes efficiently.
+
+\`\`\`jsx
+function TodoList({ todos }) {
+  return (
+    <ul>
+      {todos.map(todo => (
+        <li key={todo.id}>
+          {todo.text}
+        </li>
+      ))}
+    </ul>
+  );
+}
+\`\`\`
+
+## Forms
+
+React forms are controlled components where form data is handled by React state.
+
+\`\`\`jsx
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        placeholder="Your name"
+      />
+      <input
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="Your email"
+      />
+      <textarea
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        placeholder="Your message"
+      />
+      <button type="submit">Send</button>
+    </form>
+  );
+}
+\`\`\`
+
+## Component Lifecycle
+
+### Class Components (Older Way)
+
+\`\`\`jsx
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() };
+  }
+
+  componentDidMount() {
+    // Runs after component is added to DOM
+    this.timer = setInterval(() => {
+      this.setState({ date: new Date() });
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    // Runs before component is removed from DOM
+    clearInterval(this.timer);
+  }
+
+  render() {
+    return <div>{this.state.date.toLocaleTimeString()}</div>;
+  }
+}
+\`\`\`
+
+### Functional Components with Hooks (Modern Way)
+
+\`\`\`jsx
+function Clock() {
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    // Runs after component mounts
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+
+    // Cleanup function runs before component unmounts
+    return () => clearInterval(timer);
+  }, []); // Empty dependency array means this runs once
+
+  return <div>{date.toLocaleTimeString()}</div>;
+}
+\`\`\`
+
+## Styling Components
+
+### CSS Classes
+
+\`\`\`jsx
+// In your CSS file
+.button {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+}
+
+// In your component
+function Button() {
+  return <button className="button">Click me</button>;
+}
+\`\`\`
+
+### Inline Styles
+
+\`\`\`jsx
+function Button() {
+  const buttonStyle = {
+    backgroundColor: 'blue',
+    color: 'white',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '5px'
+  };
+
+  return <button style={buttonStyle}>Click me</button>;
+}
+\`\`\`
+
+### CSS Modules
+
+\`\`\`jsx
+// Button.module.css
+.button {
+  background-color: blue;
+  color: white;
+}
+
+// Button.jsx
+import styles from './Button.module.css';
+
+function Button() {
+  return <button className={styles.button}>Click me</button>;
+}
+\`\`\`
+
+## Common Patterns
+
+### Higher-Order Components (HOC)
+
+HOCs are functions that take a component and return a new component with additional functionality.
+
+\`\`\`jsx
+function withLoading(WrappedComponent) {
+  return function LoadingComponent({ isLoading, ...props }) {
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+    return <WrappedComponent {...props} />;
+  };
+}
+
+// Usage
+const UserProfileWithLoading = withLoading(UserProfile);
+\`\`\`
+
+### Custom Hooks
+
+Custom hooks let you extract component logic into reusable functions.
+
+\`\`\`jsx
+// Custom hook
+function useCounter(initialValue = 0) {
+  const [count, setCount] = useState(initialValue);
+
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
+  const reset = () => setCount(initialValue);
+
+  return { count, increment, decrement, reset };
+}
+
+// Using the custom hook
+function Counter() {
+  const { count, increment, decrement, reset } = useCounter(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
+}
+\`\`\`
+
+## Performance Optimization
+
+### React.memo
+
+Prevents unnecessary re-renders by memoizing the component.
+
+\`\`\`jsx
+const ExpensiveComponent = React.memo(function ExpensiveComponent({ data }) {
+  // Expensive calculations here
+  return <div>{data}</div>;
+});
+\`\`\`
+
+### useMemo
+
+Memoizes expensive calculations.
+
+\`\`\`jsx
+function ExpensiveCalculation({ items }) {
+  const expensiveValue = useMemo(() => {
+    return items.reduce((sum, item) => sum + item.value, 0);
+  }, [items]);
+
+  return <div>Total: {expensiveValue}</div>;
+}
+\`\`\`
+
+### useCallback
+
+Memoizes functions to prevent unnecessary re-renders.
+
+\`\`\`jsx
+function Parent() {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState('');
+
+  const handleClick = useCallback(() => {
+    setCount(count + 1);
+  }, [count]);
+
+  return (
+    <div>
+      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <Child onClick={handleClick} />
+    </div>
+  );
+}
+\`\`\`
+
+## Getting Started
+
+### 1. Create a New React App
+
+\`\`\`bash
+npx create-react-app my-app
+cd my-app
+npm start
+\`\`\`
+
+### 2. Basic Project Structure
+
+\`\`\`
+my-app/
+  public/
+    index.html
+  src/
+    components/
+      Header.js
+      Footer.js
+    App.js
+    index.js
+  package.json
+\`\`\`
+
+### 3. Your First Component
+
+\`\`\`jsx
+// src/App.js
+import React from 'react';
+
+function App() {
+  return (
+    <div className="App">
+      <h1>Hello, React!</h1>
+      <p>Welcome to your first React app.</p>
+    </div>
+  );
+}
+
+export default App;
+\`\`\`
+
+## Best Practices
+
+### 1. Keep Components Small
+Break large components into smaller, focused components.
+
+### 2. Use Descriptive Names
+\`\`\`jsx
+// Good
+function UserProfileCard() { ... }
+
+// Bad
+function Card() { ... }
+\`\`\`
+
+### 3. Extract Logic into Custom Hooks
+\`\`\`jsx
+// Good
+function useUserData(userId) {
+  const [user, setUser] = useState(null);
+  // ... logic
+  return user;
+}
+\`\`\`
+
+### 4. Use PropTypes or TypeScript
+\`\`\`jsx
+import PropTypes from 'prop-types';
+
+function Button({ text, onClick }) {
+  return <button onClick={onClick}>{text}</button>;
+}
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+};
+\`\`\`
+
+### 5. Handle Errors Gracefully
+\`\`\`jsx
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return this.props.children;
+  }
+}
+\`\`\`
+
+## Common Mistakes to Avoid
+
+### 1. Don't Mutate State Directly
+\`\`\`jsx
+// Wrong
+this.state.count = this.state.count + 1;
+
+// Correct
+this.setState({ count: this.state.count + 1 });
+// Or with hooks
+setCount(count + 1);
+\`\`\`
+
+### 2. Don't Forget Keys in Lists
+\`\`\`jsx
+// Wrong
+{todos.map(todo => <li>{todo.text}</li>)}
+
+// Correct
+{todos.map(todo => <li key={todo.id}>{todo.text}</li>)}
+\`\`\`
+
+### 3. Don't Call Hooks in Loops or Conditions
+\`\`\`jsx
+// Wrong
+if (condition) {
+  const [state, setState] = useState(0);
+}
+
+// Correct
+const [state, setState] = useState(0);
+if (condition) {
+  // Use state here
+}
+\`\`\`
+
+React makes building user interfaces fun and efficient. Start with simple components and gradually add more complex features as you learn!
     `
   }
 }

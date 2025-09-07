@@ -28,7 +28,35 @@ const MarkdownRenderer = ({ content }) => {
       [&>del]:text-gray-500 [&>del]:line-through
       [&>mark]:bg-yellow-200 [&>mark]:text-yellow-900 [&>mark]:px-1 [&>mark]:rounded
       [&>kbd]:bg-gray-100 [&>kbd]:border [&>kbd]:border-gray-300 [&>kbd]:rounded [&>kbd]:px-2 [&>kbd]:py-1 [&>kbd]:text-sm [&>kbd]:font-mono">
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+      <ReactMarkdown 
+        remarkPlugins={[remarkGfm]}
+        components={{
+          h1: ({ children }) => {
+            const id = children ? String(children).toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'heading-1'
+            return <h1 id={id}>{children}</h1>
+          },
+          h2: ({ children }) => {
+            const id = children ? String(children).toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'heading-2'
+            return <h2 id={id}>{children}</h2>
+          },
+          h3: ({ children }) => {
+            const id = children ? String(children).toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'heading-3'
+            return <h3 id={id}>{children}</h3>
+          },
+          h4: ({ children }) => {
+            const id = children ? String(children).toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'heading-4'
+            return <h4 id={id}>{children}</h4>
+          },
+          h5: ({ children }) => {
+            const id = children ? String(children).toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'heading-5'
+            return <h5 id={id}>{children}</h5>
+          },
+          h6: ({ children }) => {
+            const id = children ? String(children).toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'heading-6'
+            return <h6 id={id}>{children}</h6>
+          }
+        }}
+      >
         {content}
       </ReactMarkdown>
     </div>

@@ -1,8 +1,8 @@
-### What is AI?
+## **What is AI?**
 
 Artificial Intelligence, or AI, is when computers or machines are designed to think and act like humans. It means teaching them to do tasks that usually require human intelligence, like learning, solving problems, or understanding language.
 
-### How Does AI Work?
+## **How Does AI Work?**
 
 AI works by using data and instructions (called algorithms) to make decisions or predictions. Here’s a simple way to understand it:
 
@@ -14,7 +14,7 @@ AI works by using data and instructions (called algorithms) to make decisions or
 
 For example, when you talk to a virtual assistant like Siri or Alexa, it listens to your voice, understands your words, and responds. That’s AI at work!
 
-### Types of AI
+## **Types of AI**
 
 There are different kinds of AI:
 
@@ -24,7 +24,7 @@ There are different kinds of AI:
 
 **Super AI:** This is an idea for AI that could be smarter than humans in every way. It’s still just a concept.
 
-### Where is AI Used?
+## **Where is AI Used?**
 
 AI is all around us! Here are some examples:
 
@@ -40,7 +40,7 @@ AI is all around us! Here are some examples:
 
 ... etc
 
-### Why is AI Important?
+## **Why is AI Important?**
 
 AI makes life easier and faster. It can:
 
@@ -50,7 +50,7 @@ AI makes life easier and faster. It can:
 
  - Make things more fun, like creating art or music.
 
-### Is AI Safe?
+## **Is AI Safe?**
 
 AI is a tool, and like any tool, it depends on how people use it. Good uses of AI can help the world, but we need to be careful to use it responsibly to avoid mistakes or harm.
 
