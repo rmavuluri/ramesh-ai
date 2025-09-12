@@ -1,14 +1,20 @@
 // Article metadata for the right sidebar
 export const articles = [
   {
-    id: 'ai-workstations',
-    title: 'AI Workstations: Hardware Requirements for Modern AI Development',
+    id: 'mcp-server-capabilities',
+    title: 'Basic information about MCP - Prompts, Tools, Resources, Sampling and Roots',
     author: 'Ramesh Mavuluri',
     year: 2025,
   },
   {
-    id: 'mcp-server-capabilities',
-    title: 'Basic information about MCP - Prompts, Tools, Resources, Sampling and Roots',
+    id: 'rag-basics',
+    title: 'RAG Basics',
+    author: 'Ramesh Mavuluri',
+    year: 2025,
+  },
+  {
+    id: 'ai-workstations',
+    title: 'AI Workstations: Hardware Requirements for Modern AI Development',
     author: 'Ramesh Mavuluri',
     year: 2025,
   },

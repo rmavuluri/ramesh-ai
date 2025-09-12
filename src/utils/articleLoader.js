@@ -6,13 +6,15 @@ import aiWorkstations from '../content/articles/ai-workstations.md?raw'
 import mcpServerCapabilities from '../content/articles/mcp-server-capabilities.md?raw'
 import solidOopsPrinciples from '../content/articles/solid-oops-principles.md?raw'
 import twelveFactors from '../content/articles/12-factors.md?raw'
+import ragBasics from '../content/articles/rag-basics.md?raw'
 
 // Map of all available article content
 const articleContent = {
-  'ai-workstations': aiWorkstations,
   'mcp-server-capabilities': mcpServerCapabilities,
+  'ai-workstations': aiWorkstations,
   'solid-oops-principles': solidOopsPrinciples,
   '12-factors': twelveFactors,
+  'rag-basics': ragBasics,
 }
 
 // Get all available article IDs
